@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'theme.dart';
 import 'routes.dart';
-import '../presentation/navigation/bottom_navigation.dart';
+import 'theme.dart';
 
 class WaddleApp extends ConsumerWidget {
   const WaddleApp({super.key});

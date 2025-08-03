@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../presentation/pages/dashboard/dashboard_page.dart';
+import '../presentation/navigation/bottom_navigation.dart';
 import '../presentation/pages/calendar/calendar_page.dart';
-import '../presentation/pages/social/social_page.dart';
+import '../presentation/pages/dashboard/dashboard_page.dart';
 import '../presentation/pages/pet_room/pet_room_page.dart';
 import '../presentation/pages/settings/settings_page.dart';
-import '../presentation/navigation/bottom_navigation.dart';
+import '../presentation/pages/social/social_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(

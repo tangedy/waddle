@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/constants/colors.dart';
-import '../../../core/constants/app_constants.dart';
 
 class BottomNavigationWrapper extends ConsumerStatefulWidget {
   final Widget child;
@@ -20,7 +19,7 @@ class BottomNavigationWrapper extends ConsumerStatefulWidget {
 class _BottomNavigationWrapperState extends ConsumerState<BottomNavigationWrapper> {
   int _currentIndex = 0;
 
-  final List<NavigationItem> _navigationItems = [
+  final List<NavigationItem> _navigationItems = const [
     NavigationItem(
       icon: Icons.person,
       label: 'Profile',
@@ -53,12 +52,12 @@ class _BottomNavigationWrapperState extends ConsumerState<BottomNavigationWrappe
     return Scaffold(
       body: widget.child,
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: AppColors.shadow,
               blurRadius: 8,
-              offset: const Offset(0, -2),
+              offset: Offset(0, -2),
             ),
           ],
         ),
@@ -99,7 +98,7 @@ class NavigationItem {
   final String label;
   final String route;
 
-  NavigationItem({
+  const NavigationItem({
     required this.icon,
     required this.label,
     required this.route,

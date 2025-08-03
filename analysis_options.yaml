@@ -14,7 +14,7 @@ linter:
     avoid_unnecessary_containers: true
     
     # Prefer sized box over container
-    prefer_sized_box: true
+    # prefer_sized_box: true  # This rule doesn't exist in current flutter_lints
     
     # Use proper async/await
     avoid_print: true
