@@ -1,0 +1,103 @@
+name: waddle_app
+description: A gamified health and fitness mobile app featuring a customizable virtual pet (penguin), social engagement, and comprehensive health tracking.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.0.5
+  riverpod: ^2.4.9
+  flutter_riverpod: ^2.4.9
+  
+  # Firebase
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  cloud_firestore: ^4.13.6
+  firebase_storage: ^11.5.6
+  firebase_analytics: ^10.7.4
+  
+  # Local Storage
+  shared_preferences: ^2.2.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  
+  # UI Components
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.0
+  shimmer: ^3.0.0
+  lottie: ^2.7.0
+  
+  # Charts
+  fl_chart: ^0.65.0
+  
+  # Camera & Image Processing
+  camera: ^0.10.5+5
+  image_picker: ^1.0.4
+  google_ml_kit: ^0.16.3
+  
+  # Date & Time
+  intl: ^0.18.1
+  table_calendar: ^3.0.9
+  
+  # HTTP & API
+  dio: ^5.3.2
+  
+  # Navigation
+  go_router: ^12.1.3
+  
+  # Utilities
+  uuid: ^4.2.1
+  permission_handler: ^11.1.0
+  path_provider: ^2.1.1
+  url_launcher: ^6.2.1
+  
+  # Notifications
+  flutter_local_notifications: ^16.3.0
+  
+  # Health & Fitness
+  health: ^8.1.0
+  
+  # Animation
+  flutter_animate: ^4.2.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  mockito: ^5.4.4
+  build_runner: ^2.4.7
+  hive_generator: ^2.0.1
+  json_annotation: ^4.8.1
+  freezed: ^2.4.6
+  freezed_annotation: ^2.4.1
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/images/icons/
+    - assets/images/backgrounds/
+    - assets/images/pets/
+    - assets/images/ui/
+    - assets/animations/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700 
