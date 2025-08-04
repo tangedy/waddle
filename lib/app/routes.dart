@@ -27,11 +27,6 @@ class AppRouter {
             builder: (context, state) => const CalendarPage(),
           ),
           GoRoute(
-            path: '/social',
-            name: 'social',
-            builder: (context, state) => const SocialPage(),
-          ),
-          GoRoute(
             path: '/pet-room',
             name: 'pet-room',
             builder: (context, state) => const PetRoomPage(),
@@ -42,6 +37,12 @@ class AppRouter {
             builder: (context, state) => const SettingsPage(),
           ),
         ],
+      ),
+      // Social page as a separate route (not in bottom navigation)
+      GoRoute(
+        path: '/social',
+        name: 'social',
+        builder: (context, state) => const SocialPage(),
       ),
     ],
   );

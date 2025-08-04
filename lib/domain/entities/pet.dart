@@ -3,44 +3,168 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pet.freezed.dart';
 part 'pet.g.dart';
 
-@freezed
-class Pet with _$Pet {
-  const factory Pet({
-    required String petId,
-    required String userId,
-    required String name,
-    @Default('penguin') String type,
-    @Default(1) int level,
-    required PetAppearance appearance,
-    required PetStats stats,
-    required DateTime createdAt,
+class Pet {
+  final String id;
+  final String userId;
+  final String name;
+  final String type;
+  final int level;
+  final PetAppearance appearance;
+  final PetStats stats;
+  final DateTime createdAt;
+  final DateTime? lastFedAt;
+  final DateTime? lastPlayedAt;
+
+  const Pet({
+    required this.id,
+    required this.userId,
+    required this.name,
+    required this.type,
+    this.level = 1,
+    required this.appearance,
+    required this.stats,
+    required this.createdAt,
+    this.lastFedAt,
+    this.lastPlayedAt,
+  });
+
+  Pet copyWith({
+    String? id,
+    String? userId,
+    String? name,
+    String? type,
+    int? level,
+    PetAppearance? appearance,
+    PetStats? stats,
+    DateTime? createdAt,
     DateTime? lastFedAt,
     DateTime? lastPlayedAt,
-  }) = _Pet;
+  }) {
+    return Pet(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      level: level ?? this.level,
+      appearance: appearance ?? this.appearance,
+      stats: stats ?? this.stats,
+      createdAt: createdAt ?? this.createdAt,
+      lastFedAt: lastFedAt ?? this.lastFedAt,
+      lastPlayedAt: lastPlayedAt ?? this.lastPlayedAt,
+    );
+  }
 
-  factory Pet.fromJson(Map<String, dynamic> json) => _$PetFromJson(json);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is Pet && other.id == id;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  String toString() {
+    return 'Pet(id: $id, name: $name, type: $type, level: $level)';
+  }
 }
 
-@freezed
-class PetAppearance with _$PetAppearance {
-  const factory PetAppearance({
-    @Default('') String outfit,
-    @Default([]) List<String> accessories,
-    @Default('default') String color,
-  }) = _PetAppearance;
+class PetAppearance {
+  final String? outfit;
+  final List<String> accessories;
+  final String? color;
 
-  factory PetAppearance.fromJson(Map<String, dynamic> json) => _$PetAppearanceFromJson(json);
+  const PetAppearance({
+    this.outfit,
+    this.accessories = const [],
+    this.color,
+  });
+
+  PetAppearance copyWith({
+    String? outfit,
+    List<String>? accessories,
+    String? color,
+  }) {
+    return PetAppearance(
+      outfit: outfit ?? this.outfit,
+      accessories: accessories ?? this.accessories,
+      color: color ?? this.color,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is PetAppearance &&
+        other.outfit == outfit &&
+        other.accessories == accessories &&
+        other.color == color;
+  }
+
+  @override
+  int get hashCode {
+    return outfit.hashCode ^
+        accessories.hashCode ^
+        color.hashCode;
+  }
+
+  @override
+  String toString() {
+    return 'PetAppearance(outfit: $outfit, accessories: $accessories, color: $color)';
+  }
 }
 
-@freezed
-class PetStats with _$PetStats {
-  const factory PetStats({
-    @Default(100) int happiness,
-    @Default(100) int energy,
-    @Default(100) int health,
-  }) = _PetStats;
+class PetStats {
+  final int happiness;
+  final int energy;
+  final int health;
 
-  factory PetStats.fromJson(Map<String, dynamic> json) => _$PetStatsFromJson(json);
+  const PetStats({
+    this.happiness = 50,
+    this.energy = 50,
+    this.health = 50,
+  });
+
+  PetStats copyWith({
+    int? happiness,
+    int? energy,
+    int? health,
+  }) {
+    return PetStats(
+      happiness: happiness ?? this.happiness,
+      energy: energy ?? this.energy,
+      health: health ?? this.health,
+    );
+  }
+
+  double get averageStats {
+    return (happiness + energy + health) / 3.0;
+  }
+
+  bool get isHealthy {
+    return health > 30 && energy > 30 && happiness > 30;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is PetStats &&
+        other.happiness == happiness &&
+        other.energy == energy &&
+        other.health == health;
+  }
+
+  @override
+  int get hashCode {
+    return happiness.hashCode ^
+        energy.hashCode ^
+        health.hashCode;
+  }
+
+  @override
+  String toString() {
+    return 'PetStats(happiness: $happiness, energy: $energy, health: $health)';
+  }
 }
 
 @freezed
